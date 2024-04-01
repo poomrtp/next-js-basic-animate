@@ -15,8 +15,8 @@ const InView = ({ children }: HTMLAttributes<any>) => {
       },
     }),
     {
-      rootMargin: '-20% 0px',
-      amount: 'all',
+      rootMargin: '0% 0px -20% 0%',
+      amount: buildInteractionObserverThreshold(),
     }
   );
   return (

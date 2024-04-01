@@ -13,6 +13,7 @@ import Image from 'next/image';
 import Content from './Content';
 
 export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null!);
   const [isActiveContent, setIsActiveContent] = useState(false);
 
   const springApi = useSpringRef();
@@ -26,8 +27,6 @@ export default function Hero() {
       opacity: isActiveContent ? 1 : 0,
     },
   });
-
-  const transApi = useSpringRef();
 
   // This will orchestrate the two animations above, comment the last arg and it creates a sequence
   useChain([springApi, springApi], [0.1, isActiveContent ? 0.1 : 0.1]);
@@ -45,14 +44,19 @@ export default function Hero() {
   });
 
   return (
-    <div className="relative flex flex-col h-[120dvh] justify-center items-center">
-      <div className="h-dvh w-full fixed top-0 -z-10">
+    <div
+      ref={containerRef}
+      className="relative flex flex-col h-[120dvh] w-full justify-center items-center"
+    >
+      <div className="h-[120dvh] lg:h-dvh w-full fixed top-0 left-0 -z-10">
         <Image
-          className={`h-dvh w-full object-cover  pointer-events-none transition-all duration-200 ${
+          className={`h-[120dvh] lg:h-dvh w-full object-cover  pointer-events-none transition-all duration-200 ${
             isActiveContent ? 'visible' : 'visible'
           }`}
-          src="/image/culenasm/main/culenasm-band.jpeg"
-          alt=""
+          src="/image/city/juan-felipe-unsplash.jpg"
+          placeholder="blur"
+          blurDataURL="/image/city/juan-felipe-unsplash-blur.jpg"
+          alt="night life"
           width={1443}
           height={911}
           quality={100}
