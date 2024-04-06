@@ -1,9 +1,14 @@
+import { FadeDirectionEnum } from '@/types/animate/animate.enum';
 import { buildInteractionObserverThreshold } from '@/utils/animate/threshold';
 import { useInView, animated } from '@react-spring/web';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useCallback, useMemo } from 'react';
 
-const InView = ({ children }: HTMLAttributes<any>) => {
-  const [parentRef, parentSprings] = useInView(
+interface IProps extends HTMLAttributes<any> {
+  direction?: FadeDirectionEnum;
+}
+
+const InView = ({ children, direction }: IProps) => {
+  const bottomToTop = useMemo(
     () => ({
       from: {
         opacity: 0,
@@ -14,9 +19,51 @@ const InView = ({ children }: HTMLAttributes<any>) => {
         y: 0,
       },
     }),
+    []
+  );
+
+  const leftToRight = useMemo(
+    () => ({
+      from: {
+        opacity: 0,
+        x: -100,
+      },
+      to: {
+        opacity: 1,
+        x: 0,
+      },
+    }),
+    []
+  );
+
+  const rightToLeft = useMemo(
+    () => ({
+      from: {
+        opacity: 0,
+        x: 120,
+      },
+      to: {
+        opacity: 1,
+        x: 0,
+      },
+    }),
+    []
+  );
+
+  const getConfig = useCallback(() => {
+    if (direction === FadeDirectionEnum.BottomToTop) return bottomToTop;
+    if (direction === FadeDirectionEnum.LeftToRight) return leftToRight;
+    if (direction === FadeDirectionEnum.RightToLeft) return rightToLeft;
+    return bottomToTop;
+  }, [direction, rightToLeft, leftToRight, bottomToTop]);
+
+  const [parentRef, parentSprings] = useInView(
+    () => ({
+      ...getConfig(),
+    }),
     {
-      rootMargin: '0% 0px -20% 0%',
-      amount: buildInteractionObserverThreshold(),
+      // rootMargin: '-10% 0px 0% 0%',
+      amount: buildInteractionObserverThreshold(5),
     }
   );
   return (

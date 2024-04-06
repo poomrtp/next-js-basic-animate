@@ -20,11 +20,12 @@ export default function Hero() {
   const { size, ...rest } = useSpring({
     ref: springApi,
     config: config.stiff,
-    from: { size: '0%', opacity: 0 },
+    from: { size: '0%', opacity: 0, top: '50%' },
     to: {
       size: isActiveContent ? '100%' : '0%',
       background: 'rgba(255,255,255,0.7)',
       opacity: isActiveContent ? 1 : 0,
+      top: isActiveContent ? '0%' : '50%',
     },
   });
 
@@ -46,11 +47,11 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative flex flex-col h-[120dvh] w-full justify-center items-center"
+      className="relative flex flex-col h-[120dvh] lg:h-[130dvh] w-full justify-start items-center"
     >
-      <div className="h-[120dvh] lg:h-dvh w-full fixed top-0 left-0 -z-10">
+      <div className="h-[120dvh] lg:h-[130dvh] w-full sticky top-0 left-0 -z-10">
         <Image
-          className={`h-[120dvh] lg:h-dvh w-full object-cover  pointer-events-none transition-all duration-200 ${
+          className={`h-[120dvh] lg:h-[130dvh] w-full object-cover  pointer-events-none transition-all duration-200 ${
             isActiveContent ? 'visible' : 'visible'
           }`}
           src="/image/city/juan-felipe-unsplash.jpg"
@@ -68,7 +69,7 @@ export default function Hero() {
           width: size,
           height: size,
         }}
-        className="sticky top-0 inset-0 backdrop-blur-lg duration-100"
+        className="absolute z-10 top-0   backdrop-blur-lg duration-100"
       >
         <Content />
         <div className="min-h-dvh w-full "></div>

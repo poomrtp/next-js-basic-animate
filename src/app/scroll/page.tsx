@@ -1,8 +1,8 @@
 'use client';
 
 import InView from '@/components/Animate/InView';
+import TextContent from '@/components/Scroll/Content/TextContent/TextContent';
 import Hero from '@/components/Scroll/Hero/Hero';
-import { useInView, animated } from '@react-spring/web';
 
 const ScrollPage = () => {
   return (
@@ -24,6 +24,7 @@ const ScrollPage = () => {
           assumenda sit quos nostrum consequuntur.
         </InView>
       </div>
+      <TextContent />
     </div>
   );
 };

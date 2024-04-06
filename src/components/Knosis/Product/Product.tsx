@@ -1,11 +1,11 @@
-import { IProduct } from '@/types/product/product.type';
+import { TProduct } from '@/types/product/product.type';
 import Image from 'next/image';
 import { HTMLAttributes } from 'react';
 
-type IProductProps = {
-  products: IProduct[];
+type TProductProps = {
+  products: TProduct[];
 } & HTMLAttributes<HTMLDivElement>;
-const Product = ({ products, ...props }: IProductProps) => {
+const Product = ({ products, ...props }: TProductProps) => {
   return (
     <div {...props}>
       <div className="grid lg:grid-cols-2 gap-8">

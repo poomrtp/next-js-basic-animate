@@ -17,7 +17,7 @@ function Layout({ children }: ILayoutProps) {
           <ThemeSwitcher />
         </div>
       </header> */}
-      <main className="grow flex flex-row overflow-y-auto">{children}</main>
+      <main className="grow flex flex-row">{children}</main>
       <footer className="flex justify-center border-t border-base-content/20 p-4">
         <a
           href="https://github.com/poomrtp/"
