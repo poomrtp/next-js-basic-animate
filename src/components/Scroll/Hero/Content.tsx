@@ -26,7 +26,7 @@ const Content = () => {
               className="max-h-[480px] w-full object-cover object-top"
               src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974"
               alt="person sitting inside restaurant"
-              sizes="(min-width: 768px), (min-width: 1280px)"
+              sizes="(min-width: 768px) 1280px, (min-width: 1280px) 1974px"
               width={1974}
               height={1481}
             />
@@ -37,9 +37,9 @@ const Content = () => {
                 className="max-h-[480px] w-full object-cover"
                 src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=870"
                 alt="person sitting inside restaurant"
-                sizes="(min-width: 768px), (min-width: 1280px)"
-                width={2070}
-                height={1380}
+                sizes="(min-width: 1024px) 870px, (min-width: 1280px) 870px, 420px"
+                width={768}
+                height={768}
               />
             </div>
           </div>
@@ -48,7 +48,7 @@ const Content = () => {
               <Image
                 src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1469"
                 alt="liquor pouring on clear shot glass"
-                sizes="(min-width: 768px), (min-width: 1280px)"
+                sizes="(min-width: 768px) 50vw, (min-width: 1280px) 100vw, 30vw"
                 width={1469}
                 height={981}
               />
